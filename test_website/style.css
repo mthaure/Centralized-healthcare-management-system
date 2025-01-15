@@ -1,0 +1,174 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Form container styles */
+form {
+    max-width: 500px;
+    margin: 40px auto; /* Increased top margin for more spacing */
+    padding: 1.5em; /* Increased padding */
+    background: white;
+    border-radius: 8px; /* Slightly larger rounding */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softened shadow */
+}
+
+/* Form label styles */
+label {
+    margin-top: 1.2em;
+    display: block;
+    color: #333;
+    font-weight: bold; /* Bold labels for clarity */
+}
+
+/* Input, select, and textarea fields styles */
+input, select, textarea {
+    width: 100%;
+    padding: 0.7em;
+    margin-top: 0.3em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s; /* Smooth border color transition on focus */
+}
+
+/* Focus styles for input fields */
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff; /* Blue outline on focus */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Button styles */
+button {
+    margin-top: 1em;
+    padding: 0.8em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em; /* Increase button font size */
+    transition: background-color 0.3s, transform 0.1s; /* Added slight scale effect */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.02); /* Slight zoom on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
+}
+
+/* Back button styles */
+.back-button {
+    background-color: #6c757d;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+/* Center the form titles */
+h1.form-title {
+    text-align: center;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        padding: 1em;
+    }
+
+    .day-button {
+        padding: 8px 15px;
+    }
+}
+
+/* Day button styles */
+.day-button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #333; /* Darker text color */
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* Day button hover effect */
+.day-button:hover {
+    background-color: #ddd; /* Light hover effect */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Day button selected state */
+.selected {
+    background-color: #28a745; /* Green background when selected */
+    color: white;
+}
+
+/* Additional responsive design for day buttons */
+@media (max-width: 600px) {
+    .day-button {
+        padding: 8px 15px;
+    }
+}
+
+/* Success message container styles */
+#success-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height to center on the page */
+    text-align: center;
+}
+
+/* Success message text styles */
+.success-message {
+    color: green;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+/* Button styles inside the success message container */
+#success-message button {
+    margin-top: 20px;
+}
+
+/* Placeholder text style */
+input::placeholder, select::placeholder, textarea::placeholder {
+    color: #888;
+}
+
+/* Error message styles */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Form section styles (optional) */
+.form-section {
+    margin-top: 20px;
+}
+
+/* Textarea height for longer fields like address or notes */
+textarea {
+    height: 150px;
+}
+
+/* Additional styles for form responsiveness */
+@media (max-width: 600px) {
+    input, select, textarea, button {
+        font-size: 1em; /* Adjust text size for small screens */
+    }
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 500px; margin: auto; padding: 1em; background: #f9f9f9; border-radius: 5px; }
+        label { margin-top: 1em; display: block; }
+        input, select, textarea { width: 100%; padding: 0.5em; margin-top: 0.5em; }
+        button { margin-top: 1em; padding: 0.7em; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background-color: #0056b3; }
+        .back-button { background-color: #6c757d; }
+        .success-message { color: green; text-align: center; font-size: 1.2em; margin-top: 20px; }
+        .form-container { display: block; }
+    </style>
+    <script>
+        function formatPhoneNumber(input) {
+            let numbers = input.value.replace(/\D/g, '');
+            if (numbers.length > 10) {
+                numbers = numbers.slice(0, 10);
+            }
+            if (numbers.length > 6) {
+                input.value = numbers.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+            } else if (numbers.length > 3) {
+                input.value = numbers.replace(/(\d{3})(\d{3})/, '$1-$2');
+            } else {
+                input.value = numbers;
+            }
+        }
+
+        function formatSSN(input) {
+            let numbers = input.value.replace(/\D/g, '');
+            if (numbers.length > 9) {
+                numbers = numbers.slice(0, 9);
+            }
+            if (numbers.length > 5) {
+                input.value = numbers.replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3');
+            } else if (numbers.length > 3) {
+                input.value = numbers.replace(/(\d{3})(\d{2})/, '$1-$2');
+            } else {
+                input.value = numbers;
+            }
+        }
+
+        function restrictDigits(input) {
+            // Allow only digits and restrict input to 15 characters
+            input.value = input.value.replace(/\D/g, '').slice(0, 15);
+        }
+    </script>
+</head>
+<body>
+
+<h2 style="text-align:center;">Patient Registration Form</h2>
+
+<div id="form-container" class="form-container">
+    <form id="registration-form" action="patient_form.php" method="post">
+        <!-- Patient Details -->
+        <label for="patient_name">Patient Name:</label>
+        <input type="text" id="patient_name" name="patient_name" required>
+
+        <label for="patient_ssn">Patient SSN:</label>
+        <input type="text" id="patient_ssn" name="patient_ssn" required placeholder="123-45-6789" maxlength="11" oninput="formatSSN(this)">
+        <small>Format: 123-45-6789</small>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <label for="date_of_birth">Date of Birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required placeholder="123 Main St, City, State, Zip Code">
+
+        <label for="emergency_contact">Emergency Contact:</label>
+        <input type="text" id="emergency_contact" name="emergency_contact" required placeholder="123-456-7890" pattern="\d{3}-\d{3}-\d{4}" oninput="formatPhoneNumber(this)">
+        <small>Format: 123-456-7890</small>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required placeholder="123-456-7890" pattern="\d{3}-\d{3}-\d{4}" oninput="formatPhoneNumber(this)">
+        <small>Format: 123-456-7890</small>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="allergies">Allergies:</label>
+        <textarea id="allergies" name="allergies" rows="3"></textarea>
+
+        <label for="preferred_language">Preferred Language:</label>
+        <select id="preferred_language" name="preferred_language" required>
+            <option value="" disabled selected>Select</option>
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Mandarin">Mandarin</option>
+            <option value="French">French</option>
+            <option value="Arabic">Arabic</option>
+        </select>
+
+        <label for="notes">Notes:</label>
+        <textarea id="notes" name="notes" rows="3"></textarea>
+
+        <!-- Insurance Information -->
+        <label for="company_id">Insurance Company:</label>
+        <select id="company_id" name="company_id" required>
+            <option value="1">HealthFirst Insurance</option>
+            <option value="2">WellCare Insurance</option>
+            <option value="3">PrimeCare Insurance</option>
+            <option value="4">CarePlus Health</option>
+            <option value="5">MediSure Insurance</option>
+        </select>
+
+        <label for="insurance_serial_number">Insurance Serial Number:</label>
+        <input type="text" id="insurance_serial_number" name="insurance_serial_number" maxlength="15" pattern="\d{1,15}" title="Please enter up to 15 digits only" required oninput="restrictDigits(this)">
+
+        <label for="insurance_expiry_date">Insurance Expiry Date:</label>
+        <input type="date" id="insurance_expiry_date" name="insurance_expiry_date" required>
+
+        <button type="submit">Submit</button>
+        <button type="button" class="back-button" onclick="window.location.href='homepage.php'">Back to Homepage</button>
+    </form>
+</div>
+
+</body>
+</html>

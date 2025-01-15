@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration Form</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 500px; margin: auto; padding: 1em; background: #f9f9f9; border-radius: 5px; }
+        label { margin-top: 1em; display: block; }
+        input, select, textarea { width: 100%; padding: 0.5em; margin-top: 0.5em; }
+        button { margin-top: 1em; padding: 0.7em; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background-color: #0056b3; }
+        .back-button { background-color: #6c757d; } /* Style for back button */
+    </style>
+    <script>
+        function formatPhoneNumber(input) {
+            let numbers = input.value.replace(/\D/g, '');
+            if (numbers.length > 10) {
+                numbers = numbers.slice(0, 10);
+            }
+            if (numbers.length > 6) {
+                input.value = numbers.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+            } else if (numbers.length > 3) {
+                input.value = numbers.replace(/(\d{3})(\d{3})/, '$1-$2');
+            } else {
+                input.value = numbers;
+            }
+        }
+
+        function formatSSN(input) {
+            let numbers = input.value.replace(/\D/g, '');
+            if (numbers.length > 9) {
+                numbers = numbers.slice(0, 9);
+            }
+            if (numbers.length > 5) {
+                input.value = numbers.replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3');
+            } else if (numbers.length > 3) {
+                input.value = numbers.replace(/(\d{3})(\d{2})/, '$1-$2');
+            } else {
+                input.value = numbers;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<h2 style="text-align:center;">Doctor Registration Form</h2>
+
+<form action="doctor_php.php" method="post">
+    <label for="doctor_name">Doctor Name:</label>
+    <input type="text" id="doctor_name" name="doctor_name" required>
+
+    <label for="doctor_ssn">Doctor SSN:</label>
+    <input type="text" id="doctor_ssn" name="doctor_ssn" required placeholder="123-45-6789" maxlength="12" oninput="formatSSN(this)">
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="tel" id="phone_number" name="phone_number" required placeholder="123-456-7890" oninput="formatPhoneNumber(this)">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="work_hours">Work Hours:</label>
+    <input type="text" id="work_hours" name="work_hours" required placeholder="9:00 AM - 5:00 PM">
+
+    <label for="department_id">Department:</label>
+    <select id="department_id" name="department_id" required>
+        <option value="">Select Department</option>
+        <option value="1">Cardiology</option>
+        <option value="2">Neurology</option>
+        <option value="3">Orthopedics</option>
+        <option value="4">Pediatrics</option>
+        <option value="5">Dermatology</option>
+        <option value="6">Psychiatrist</option>
+    </select>
+
+    <label for="specialization">Specialization:</label>
+    <select id="specialization" name="specialization" required>
+    <option value="">Select Specialization</option>
+    <option value="1">Cardiology</option>
+    <option value="2">Neurology</option>
+    <option value="3">Pediatrics</option>
+    <option value="4">Orthopedics</option>
+    <option value="5">Dermatology</option>
+    <option value="6">Psychiatrist</option>
+    </select>
+
+
+    <!-- No need for the "Is Active" dropdown, it's automatically set to 1 -->
+    <input type="hidden" name="is_active" value="1">
+
+    <button type="submit">Submit</button>
+    <button type="button" class="back-button" onclick="window.location.href='homepage.php'">Back to Homepage</button>
+</form>
+
+</body>
+</html>
