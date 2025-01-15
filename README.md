@@ -1,8 +1,16 @@
 # Centralized-healthcare-management-system
 
-Required Applications: XAMPP to run the server, Phpmyadmin for the database, PowerBI for the visuals.
+This project provides a centralized solution for managing healthcare data efficiently. It integrates server and database management to streamline healthcare processes.
 
-Steps to run:
-1) Turn on Apache and MySQL on XAMPP.
-2) Go to Phpmyadmin and get the database copied and running in Phpmyadmin.
-3) 
+Requirements:
+XAMPP for server management
+PhpMyAdmin for database management
+PowerBI for visualization of healthcare data
+Setup Instructions:
+Install XAMPP and start Apache & MySQL.
+Use PhpMyAdmin to import the provided database file.
+Open the system in your browser for management functionality.
+Technologies Used:
+PHP
+MySQL
+PowerBI (for data visualization)
